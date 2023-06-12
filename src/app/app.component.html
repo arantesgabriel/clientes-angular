@@ -1,2 +1,13 @@
-<div>{{title}}</div>
+<div class="card flex justify-content-center">
+  <p-card header="Bem vindo ao Sistema de Clientes!">
+  </p-card>
+</div>
+
+<div class="card flex justify-content-center">
+  <input type="text" pInputText [(ngModel)]="nome" />
+</div>
+
+<div>
+  {{nome}}
+</div>
 <router-outlet></router-outlet>
