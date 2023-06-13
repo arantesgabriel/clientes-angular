@@ -9,5 +9,4 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
   title = 'Bem vindo ao Sistema de Clientes!';
-  nome: String='';
 }
