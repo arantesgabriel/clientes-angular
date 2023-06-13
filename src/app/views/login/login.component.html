@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Clientes</title>
+    <script src="login.component.ts"></script>
+
+</head>
+
 <div class="p-grid d-flex p-justify-content-center">
   <div class="campo-login">
     <p-card>
@@ -5,7 +17,7 @@
         <div class="p-col-usuario">
           <div class="flex flex-column gap-2">
             <div class="p-field">
-              <label htmlFor="inputUsuario" class="p-float-label">Usuario:</label>
+              <label htmlFor="inputUsuario" class="p-float-label">Usuário:</label>
               <input pInputText id="inputUsuario" aria-describedby="inputUsuario-help" [(ngModel)]="nome" />
             </div>
           </div>
@@ -18,7 +30,9 @@
           </div>
         </div>
       </div>
-        <div class="p-col-12"></div>
+        <div class="p-col-botao">
+          <p-button label="Entrar" (onClick)="cadastrar()"></p-button>
+        </div>
       </div>
     </p-card>
   </div>
