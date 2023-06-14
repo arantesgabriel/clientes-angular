@@ -1,39 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema de Clientes</title>
     <script src="login.component.ts"></script>
+  </head>
+  <body>
+    <div class="containerTitle">
+      <span class="title"> Sistema de Clientes </span>
+    </div>
 
-</head>
+    <p-card class="campo-login">
+      <label class="p-float-label">Usuário:</label>
 
-<div class="p-grid d-flex p-justify-content-center">
-  <div class="campo-login">
-    <p-card>
-      <div class="p-grid">
-        <div class="p-col-usuario">
-          <div class="flex flex-column gap-2">
-            <div class="p-field">
-              <label htmlFor="inputUsuario" class="p-float-label">Usuário:</label>
-              <input pInputText id="inputUsuario" aria-describedby="inputUsuario-help" [(ngModel)]="nome" />
-            </div>
-          </div>
-        </div>
-        <div class="p-col-senha">
-        <div class="flex flex-column gap-2">
-          <div class="p-field">
-            <label htmlFor="inputSenha" class="p-float-label">Senha:</label>
-            <input pInputText id="inputSenha" aria-describedby="inputSenha-help" [(ngModel)]="senha" />
-          </div>
-        </div>
+      <div class="campoUsuario">
+        <input
+          class="inputUsuario"
+          type="text"
+          pInputText
+          [(ngModel)]="usuario"
+        />
       </div>
-        <div class="p-col-botao">
-          <p-button label="Entrar" (onClick)="cadastrar()"></p-button>
-        </div>
+
+      <label class="p-float-label">Senha:</label>
+
+      <p-password
+        class="inputSenha"
+        [(ngModel)]="senha"
+        [toggleMask]="true"
+      ></p-password>
+
+      <p *ngIf="campoUsuarioVazio" class="error-message">
+        O campo usuário está vazio.
+      </p>
+      <p *ngIf="campoSenhaVazio" class="error-message">
+        O campo senha está vazio.
+      </p>
+
+      <div class="botao">
+        <p-button label="Entrar" (click)="validar()"></p-button>
       </div>
     </p-card>
-  </div>
-</div>
+  </body>
+</html>

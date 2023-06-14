@@ -6,22 +6,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  nome: string = '';
+  usuario: string = '';
   senha: string = '';
-
-  cadastrar(): void {
-    let inputUsuario = document.getElementById('input-usuario');
-    let inputSenha = document.getElementById('input-senha');
-    this.validar();
-  }
+  campoUsuarioVazio: boolean = false;
+  campoSenhaVazio: boolean = false;
 
   validar(): void {
-    let inputUsuario = document.getElementById('input-usuario');
-    let inputSenha = document.getElementById('input-senha');
 
-    if (inputUsuario?.textContent === "") {
-      alert("O campo usuário está vazio")
+    // Validação campo usuário.
+    this.campoUsuarioVazio = this.usuario === '';
+
+    if (this.campoUsuarioVazio) {
+      setTimeout(() => {
+        this.campoUsuarioVazio = false;
+      }, 4000); // 4 segundos em milissegundos
     }
 
+    // Validação campo senha.
+    this.campoSenhaVazio = this.senha === '';
+
+    if (this.campoSenhaVazio) {
+      setTimeout(() => {
+        this.campoSenhaVazio = false;
+      }, 4000); // 4 segundos em milissegundos
+    }
 }
 }
