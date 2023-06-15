@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-
   usuario: string = '';
   senha: string = '';
   campoUsuarioVazio: boolean = false;
@@ -42,5 +41,4 @@ export class LoginComponent {
   redirecionarCadastro(): void {
     this.router.navigate(['/cadastro']);
   }
-
 }

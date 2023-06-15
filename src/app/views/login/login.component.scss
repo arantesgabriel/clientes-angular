@@ -7,6 +7,8 @@ body {
 }
 
 .containerTitle {
+  display: flex;
+  justify-content: center;
   padding: 10px;
 
   .title {
@@ -16,11 +18,9 @@ body {
 }
 
 .campo-login {
+  width: 350px;
 
-  .p-element {
-    padding: 20px 30px;
-  }
-
+  // Título 'Login'
   .p-float-label {
     display: flex;
     justify-content: center;
@@ -30,12 +30,45 @@ body {
 
   .campoUsuario {
     display: flex;
+    margin-bottom: 2%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
 
     .inputUsuario {
       width: 100%;
-      padding: 12.5px;
-      margin: 0 30px;
+      padding: 12.5px; // Tamanho do campo
+      margin: 0 30px; // Laterais do campo
     }
+  }
+
+  .campoUsuario .pi-user {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 5px;
+  }
+
+  .campoSenha {
+    display: flex;
+
+    .campoInputSenha {
+      padding-right: 20px;
+    }
+    .inputSenha {
+      padding: 0 30px;
+
+      ::ng-deep .p-inputtext {
+        padding-right: 64.5px;
+      }
+    }
+  }
+
+  .campoSenha .pi-lock {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 825px;
   }
 
   .botao {
@@ -54,8 +87,8 @@ body {
 
   .rememberPassword {
     display: flex;
-    margin-top: 12px;
     align-items: center;
+    justify-content: center;
   }
 
   .rememberPassword p-checkbox {
@@ -67,15 +100,15 @@ body {
   .rememberPassword label {
     font-size: 14px;
     margin-right: 20px;
+    margin-left: 10px;
   }
 
-  .criarConta{
+  .criarConta {
     font-size: 14px;
     margin-left: 15px;
   }
 
-  .criarConta:hover{
+  .criarConta:hover {
     text-decoration: underline;
   }
-
 }

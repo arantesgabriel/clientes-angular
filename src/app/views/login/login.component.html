@@ -1,44 +1,36 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistema de Clientes</title>
-    <script src="login.component.ts"></script>
-  </head>
   <body>
-    <div class="containerTitle">
-      <span class="title"> Login </span>
-    </div>
-
     <p-card class="campo-login">
-      <label class="p-float-label">Usuário:</label>
+      <div class="containerTitle">
+        <span class="title"> Login </span>
+      </div>
 
       <div class="campoUsuario">
+        <span class="pi pi-user"></span>
         <input
           class="inputUsuario"
           type="text"
           pInputText
           [(ngModel)]="usuario"
+          placeholder="Usuário"
         />
       </div>
 
-      <label class="p-float-label">Senha:</label>
-
-      <p-password
-        class="inputSenha"
-        [(ngModel)]="senha"
-        [feedback]="false"
-        [toggleMask]="true"
-      ></p-password>
+      <div class="campoSenha">
+        <span class="pi pi-lock"></span>
+        <p-password
+          class="inputSenha"
+          [(ngModel)]="senha"
+          [feedback]="false"
+          [toggleMask]="true"
+          placeholder="Senha"
+        ></p-password>
+      </div>
 
       <form class="rememberPassword" [formGroup]="lembrarSenha">
         <p-checkbox value="lembrarSenha" id="ls"></p-checkbox>
         <label for="ls">Lembrar senha</label>
         <p class="criarConta" (click)="redirecionarCadastro()">Criar conta</p>
       </form>
-
 
       <p *ngIf="campoUsuarioVazio" class="error-message">
         O campo usuário está vazio.
@@ -51,5 +43,5 @@
         <p-button label="Entrar" (click)="validar()"></p-button>
       </div>
     </p-card>
+
   </body>
-</html>
