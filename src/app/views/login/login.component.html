@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="containerTitle">
-      <span class="title"> Sistema de Clientes </span>
+      <span class="title"> Login </span>
     </div>
 
     <p-card class="campo-login">
@@ -29,8 +29,16 @@
       <p-password
         class="inputSenha"
         [(ngModel)]="senha"
+        [feedback]="false"
         [toggleMask]="true"
       ></p-password>
+
+      <form class="rememberPassword" [formGroup]="lembrarSenha">
+        <p-checkbox value="lembrarSenha" id="ls"></p-checkbox>
+        <label for="ls">Lembrar senha</label>
+        <p class="criarConta" (click)="redirecionarCadastro()">Criar conta</p>
+      </form>
+
 
       <p *ngIf="campoUsuarioVazio" class="error-message">
         O campo usuário está vazio.

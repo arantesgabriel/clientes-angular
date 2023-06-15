@@ -7,7 +7,7 @@ body {
 }
 
 .containerTitle {
-  padding: 10px 0px;
+  padding: 10px;
 
   .title {
     font-family: Arial, Helvetica, sans-serif;
@@ -17,23 +17,28 @@ body {
 
 .campo-login {
 
-  .p-float-label{
+  .p-element {
+    padding: 20px 30px;
+  }
+
+  .p-float-label {
     display: flex;
     justify-content: center;
     margin-bottom: 5px;
     margin-top: 5px;
   }
 
-  .campoUsuario{
+  .campoUsuario {
     display: flex;
 
-    .inputUsuario{
+    .inputUsuario {
       width: 100%;
+      padding: 12.5px;
+      margin: 0 30px;
     }
-
   }
 
-  .botao{
+  .botao {
     display: flex;
     justify-content: center;
     margin-top: 15px;
@@ -42,6 +47,35 @@ body {
   .error-message {
     display: flex;
     justify-content: center;
+    flex-shrink: 0;
+    font-size: 13px;
     color: red;
   }
+
+  .rememberPassword {
+    display: flex;
+    margin-top: 12px;
+    align-items: center;
+  }
+
+  .rememberPassword p-checkbox {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+  }
+
+  .rememberPassword label {
+    font-size: 14px;
+    margin-right: 20px;
+  }
+
+  .criarConta{
+    font-size: 14px;
+    margin-left: 15px;
+  }
+
+  .criarConta:hover{
+    text-decoration: underline;
+  }
+
 }
