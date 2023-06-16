@@ -52,11 +52,8 @@ body {
   .campoSenha {
     display: flex;
 
-    .campoInputSenha {
-      padding-right: 20px;
-    }
     .inputSenha {
-      padding: 0 30px;
+      padding-left: 9px;
 
       ::ng-deep .p-inputtext {
         padding-right: 64.5px;
@@ -65,10 +62,8 @@ body {
   }
 
   .campoSenha .pi-lock {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 825px;
+    margin-top: 11px;
+    margin-left: 5px;
   }
 
   .botao {
@@ -80,7 +75,6 @@ body {
   .error-message {
     display: flex;
     justify-content: center;
-    flex-shrink: 0;
     font-size: 13px;
     color: red;
   }
