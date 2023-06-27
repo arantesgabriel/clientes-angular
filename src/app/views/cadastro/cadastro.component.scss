@@ -17,28 +17,45 @@
   display: flex;
   background-color: #282936;
   border-radius: 10px;
-  width: 28%;
   height: 48%;
+  width: 30%;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .campos-cadastro {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 43%;
+  width: 64%;
 
-  .inputEmailCadastro{
+  .inputUsuarioCadastro {
+    width: 100%;
+  }
+
+  .inputEmailCadastro {
+    width: 100%;
     margin-top: 5px;
   }
 
-  .inputSenhaCadastro{
-    margin: 5px;
+  .inputSenhaCadastro {
+    width: 100%;
+    margin: 5px 0px;
+
+    // Ajustando o tamanho do campo de input da senha de cadastro.
+    ::ng-deep .p-password {
+      width: 100%;
+
+      .p-inputtext {
+        width: 100%;
+      }
+    }
   }
 }
 
 .button {
   display: flex;
   justify-content: center;
-  margin-top: 4px;
 }

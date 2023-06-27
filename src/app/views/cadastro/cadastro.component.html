@@ -13,10 +13,8 @@
   <body>
     <div class="container">
       <div class="content">
-
-        <form class="campos-cadastro" [formGroup]="cadastroForm" >
-          <span class="title">Cadastro</span>
-
+        <span class="title">Cadastro</span>
+        <form class="campos-cadastro" [formGroup]="cadastroForm">
           <input
             id="userInput"
             type="text"
@@ -33,25 +31,26 @@
             placeholder="Email"
           />
 
-          <input
+          <p-password
             id="passwordInput"
-            type="password"
             class="inputSenhaCadastro"
-            pInputText
             placeholder="Senha"
-          />
-
+            [feedback]="false"
+            [toggleMask]="true"
+          ></p-password>
 
         </form>
 
         <div class="button">
           <p-button
+            label="Small"
+            styleClass="p-button-sm"
             label="Criar conta"
             [loading]="loading"
             (click)="load()"
           ></p-button>
         </div>
       </div>
-    </div>
+      </div>
   </body>
 </html>
