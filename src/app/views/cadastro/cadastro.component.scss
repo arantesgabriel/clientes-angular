@@ -17,8 +17,8 @@
   display: flex;
   background-color: #282936;
   border-radius: 10px;
-  height: 48%;
-  width: 30%;
+  height: 400px;
+  width: 385px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -28,8 +28,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 43%;
-  width: 64%;
+  height: 160px;
+  width: 280px;
 
   .inputUsuarioCadastro {
     width: 100%;
@@ -42,9 +42,9 @@
 
   .inputSenhaCadastro {
     width: 100%;
-    margin: 5px 0px;
+    margin: 5px;
 
-    // Ajustando o tamanho do campo de input da senha de cadastro.
+    // Ajustando o tamanho do campo de input da senha de cadastro, para ocupar 100% da div 'campos-cadastro'.
     ::ng-deep .p-password {
       width: 100%;
 
@@ -58,4 +58,42 @@
 .button {
   display: flex;
   justify-content: center;
+}
+
+.possuoConta{
+  font-family: Lato, Helvetica, sans-serif;
+  font-size: 12.5px;
+  margin: 8px;
+}
+
+.possuoConta:hover{
+  text-decoration: underline;
+}
+
+// Versões Mobile
+
+@media screen and (max-width: 1108px) {
+  .content {
+    height: 400px;
+    width: 380px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .content {
+    height: 400px;
+    width: 380px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .content {
+    height: 400px;
+    width: 300px;
+  }
+
+  .campos-cadastro {
+    height: 160px;
+    width: 200px;
+  }
 }

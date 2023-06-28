@@ -43,13 +43,14 @@
 
         <div class="button">
           <p-button
-            label="Small"
-            styleClass="p-button-sm"
             label="Criar conta"
             [loading]="loading"
             (click)="load()"
           ></p-button>
         </div>
+
+        <p class="possuoConta" (click)="redirecionarLogin()">Já tenho conta</p>
+
       </div>
       </div>
   </body>

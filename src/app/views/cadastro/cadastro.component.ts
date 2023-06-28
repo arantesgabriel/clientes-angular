@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -13,16 +14,22 @@ export class CadastroComponent {
   cadastroForm = new FormGroup({
     userInput: new FormControl(''),
     emailInput: new FormControl(''),
-    passwordInput: new FormControl('')
+    passwordInput: new FormControl(''),
   });
+
+  constructor(private router: Router) {}
 
   // Método que realiza o efeito de loading do botão criar conta
   load() {
-      this.loading = true;
+    this.loading = true;
 
-      setTimeout(() => {
-          this.loading = false
-      }, 2000);
+    setTimeout(() => {
+      this.loading = false;
+    }, 2000);
   }
 
+  redirecionarLogin(): void {
+    this.router.navigate(['/login']);
+
+  }
 }
