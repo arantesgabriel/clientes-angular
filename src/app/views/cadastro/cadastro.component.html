@@ -47,10 +47,15 @@
           <p-button
             label="Criar conta"
             [loading]="loading"
-            (click)="load()"
+            (click)="startLoader()"
             (onClick)="cadastrarCliente()"
           ></p-button>
         </div>
+
+
+        <p *ngIf="mostrarMensagemErro" class="error-message">
+          {{mensagemErro}}
+        </p>
 
         <p class="possuoConta" (click)="redirecionarLogin()">Já tenho conta</p>
       </div>
