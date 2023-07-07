@@ -20,7 +20,8 @@
             type="text"
             class="inputUsuarioCadastro"
             pInputText
-            placeholder="Usuário"
+            placeholder="Nome"
+            formControlName="userInput"
           />
 
           <input
@@ -29,6 +30,7 @@
             class="inputEmailCadastro"
             pInputText
             placeholder="Email"
+            formControlName="emailInput"
           />
 
           <p-password
@@ -37,8 +39,8 @@
             placeholder="Senha"
             [feedback]="false"
             [toggleMask]="true"
+            formControlName="passwordInput"
           ></p-password>
-
         </form>
 
         <div class="button">
@@ -46,12 +48,12 @@
             label="Criar conta"
             [loading]="loading"
             (click)="load()"
+            (onClick)="cadastrarCliente()"
           ></p-button>
         </div>
 
         <p class="possuoConta" (click)="redirecionarLogin()">Já tenho conta</p>
-
       </div>
-      </div>
+    </div>
   </body>
 </html>

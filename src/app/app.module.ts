@@ -13,6 +13,7 @@ import { LoginComponent } from './views/login/login.component';
 import { CadastroComponent } from './views/cadastro/cadastro.component';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CheckboxModule } from 'primeng/checkbox';
     ReactiveFormsModule,
     ButtonModule,
     CheckboxModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
