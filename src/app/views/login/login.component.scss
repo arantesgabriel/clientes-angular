@@ -1,108 +1,105 @@
-body {
+.container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.containerTitle {
+.content {
   display: flex;
+  background-color: #282936;
+  border-radius: 10px;
+  height: 400px;
+  width: 385px;
+  flex-direction: column;
   justify-content: center;
-  padding: 10px;
+  align-items: center;
+}
 
-  .title {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+.title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.campos-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 210px;
+  width: 280px;
+
+  .inputUsuarioLogin {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .inputSenhaLogin {
+    width: 100%;
   }
 }
 
-.campo-login {
-  width: 350px;
+.rememberPassword {
+  font-family: Lato, Helvetica, sans-serif;
+  font-size: 12.5px;
+  margin: 8px;
+  padding: 5px;
+}
 
-  // Título 'Login'
-  .p-float-label {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 5px;
-    margin-top: 5px;
+.rememberPassword p-checkbox {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.error-message {
+  display: flex;
+  justify-content: center;
+  font-size: 13px;
+  color: red;
+}
+
+.rememberPassword label {
+  font-size: 14px;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+.criarConta {
+  display: flex;
+  justify-content: center;
+  font-family: Lato, Helvetica, sans-serif;
+  font-size: 11px;
+}
+
+.criarConta:hover {
+  text-decoration: underline;
+}
+
+// Versões Mobile
+
+@media screen and (max-width: 1108px) {
+  .content {
+    height: 400px;
+    width: 380px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .content {
+    height: 400px;
+    width: 380px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .content {
+    height: 400px;
+    width: 300px;
   }
 
-  .campoUsuario {
-    display: flex;
-    margin-bottom: 2%;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-
-    .inputUsuario {
-      width: 100%;
-      padding: 12.5px; // Tamanho do campo
-      margin: 0 30px; // Laterais do campo
-    }
-  }
-
-  .campoUsuario .pi-user {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 5px;
-  }
-
-  .campoSenha {
-    display: flex;
-
-    .inputSenha {
-      padding-left: 9px;
-
-      ::ng-deep .p-inputtext {
-        padding-right: 64.5px;
-      }
-    }
-  }
-
-  .campoSenha .pi-lock {
-    margin-top: 11px;
-    margin-left: 5px;
-  }
-
-  .botao {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-  }
-
-  .error-message {
-    display: flex;
-    justify-content: center;
-    font-size: 13px;
-    color: red;
-  }
-
-  .rememberPassword {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .rememberPassword p-checkbox {
-    flex-shrink: 0;
-    width: 16px;
-    height: 16px;
-  }
-
-  .rememberPassword label {
-    font-size: 14px;
-    margin-right: 20px;
-    margin-left: 10px;
-  }
-
-  .criarConta {
-    font-size: 14px;
-    margin-left: 15px;
-  }
-
-  .criarConta:hover {
-    text-decoration: underline;
+  .campos-login {
+    height: 160px;
+    width: 200px;
   }
 }

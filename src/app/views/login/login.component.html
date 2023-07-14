@@ -9,52 +9,52 @@
     <link rel="stylesheet" href="./login.component.scss" />
     <script src="login.component.ts"></script>
   </head>
-  
+
   <body>
-    <p-card class="campo-login">
-      <div class="containerTitle">
-        <span class="title"> Login </span>
+    <div class="container">
+      <div class="content">
+        <form class="campos-login">
+          <div class="campos-login" [formGroup]="loginForm">
+            <span class="title">Login</span>
+            <input
+              id="userInput"
+              type="text"
+              class="inputUsuarioLogin"
+              pInputText
+              placeholder="Nome"
+              formControlName="userInput"
+            />
+
+            <input
+              id="passwordInput"
+              type="text"
+              class="inputSenhaLogin"
+              pInputText
+              placeholder="Senha"
+              formControlName="passwordInput"
+            />
+
+            <form class="rememberPassword" [formGroup]="lembrarSenha">
+              <p-checkbox value="lembrarSenha" id="ls"></p-checkbox>
+              <label for="ls">Lembrar senha</label>
+            </form>
+
+            <p *ngIf="campoUsuarioVazio" class="error-message">
+              O campo usuário está vazio.
+            </p>
+            <p *ngIf="campoSenhaVazio" class="error-message">
+              O campo senha está vazio.
+            </p>
+
+            <div class="button">
+              <p-button label="Entrar" (click)="validar()"></p-button>
+            </div>
+            <p class="criarConta" (click)="redirecionarCadastro()">
+              Criar conta
+            </p>
+          </div>
+        </form>
       </div>
-
-      <div class="campoUsuario">
-        <span class="pi pi-user"></span>
-        <input
-          class="inputUsuario"
-          type="text"
-          pInputText
-          [(ngModel)]="usuario"
-          placeholder="Usuário"
-        />
-      </div>
-
-      <div class="campoSenha">
-        <span class="pi pi-lock"></span>
-        <p-password
-          class="inputSenha"
-          [(ngModel)]="senha"
-          [feedback]="false"
-          [toggleMask]="true"
-          placeholder="Senha"
-        ></p-password>
-      </div>
-
-      <form class="rememberPassword" [formGroup]="lembrarSenha">
-        <p-checkbox value="lembrarSenha" id="ls"></p-checkbox>
-        <label for="ls">Lembrar senha</label>
-        <p class="criarConta" (click)="redirecionarCadastro()">Criar conta</p>
-      </form>
-
-      <p *ngIf="campoUsuarioVazio" class="error-message">
-        O campo usuário está vazio.
-      </p>
-      <p *ngIf="campoSenhaVazio" class="error-message">
-        O campo senha está vazio.
-      </p>
-
-      <div class="botao">
-        <p-button label="Entrar" (click)="validar()"></p-button>
-      </div>
-    </p-card>
-
+    </div>
   </body>
 </html>

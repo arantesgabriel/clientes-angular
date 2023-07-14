@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,6 +13,11 @@ export class LoginComponent {
   campoUsuarioVazio: boolean = false;
   campoSenhaVazio: boolean = false;
   lembrarSenha: FormGroup;
+
+  loginForm = new FormGroup({
+    userInput: new FormControl(''),
+    passwordInput: new FormControl('')
+  });
 
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.lembrarSenha = this.formBuilder.group({});
