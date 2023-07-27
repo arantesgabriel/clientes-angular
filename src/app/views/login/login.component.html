@@ -15,24 +15,26 @@
       <div class="content">
         <form class="campos-login">
           <div class="campos-login" [formGroup]="loginForm">
-            <span class="title">Login</span>
+            <span class="title">Login Dashboard</span>
             <input
               id="userInput"
               type="text"
               class="inputUsuarioLogin"
               pInputText
-              placeholder="Nome"
+              placeholder="Usuário"
               formControlName="userInput"
+              maxlength="50"
             />
 
-            <input
+            <p-password
               id="passwordInput"
-              type="text"
               class="inputSenhaLogin"
-              pInputText
               placeholder="Senha"
+              [feedback]="false"
+              [toggleMask]="true"
+              [maxLength]="maxPasswdLength"
               formControlName="passwordInput"
-            />
+            ></p-password>
 
             <form class="rememberPassword" [formGroup]="lembrarSenha">
               <p-checkbox value="lembrarSenha" id="ls"></p-checkbox>
@@ -47,7 +49,7 @@
             </p>
 
             <div class="button">
-              <p-button label="Entrar" (click)="validar()"></p-button>
+              <p-button label="Entrar" (click)="efetuarLogin()"></p-button>
             </div>
             <p class="criarConta" (click)="redirecionarCadastro()">
               Criar conta

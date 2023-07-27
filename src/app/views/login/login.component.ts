@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { ContaFuncionario } from 'src/app/models/ContaFuncionario';
 
+@Injectable({
+  providedIn: 'root',
+})
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,15 +18,49 @@ export class LoginComponent {
   senha: string = '';
   campoUsuarioVazio: boolean = false;
   campoSenhaVazio: boolean = false;
+  maxPasswdLength = 50;
   lembrarSenha: FormGroup;
 
   loginForm = new FormGroup({
     userInput: new FormControl(''),
-    passwordInput: new FormControl('')
+    passwordInput: new FormControl(''),
   });
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private http: HttpClient
+  ) {
     this.lembrarSenha = this.formBuilder.group({});
+  }
+
+  private apiBack = 'http://localhost:8080';
+
+  efetuarLogin() {
+    // Coleta as informações digitadas pelo usuário no formGroup.
+    const dadosFuncionario: ContaFuncionario = {
+      usuario: this.loginForm.controls['userInput'].value,
+      senha: this.loginForm.controls['passwordInput'].value,
+    };
+
+    this.http
+      .post<any>(`${this.apiBack}/funcionario/efetuarLogin`, dadosFuncionario, {
+        headers: { 'Content-Type': 'application/json' },
+        responseType: 'text' as 'json',
+      })
+      .subscribe(
+        (response) => {
+          console.log(response); // Mensagem de sucesso ou erro da API
+          if (response === 'Login bem-sucedido!') {
+            this.router.navigate(['/dashboard']);
+            this.loginForm.reset();
+          }
+        },
+        (error) => {
+          alert('Usuário ou senha incorretos.');
+          this.loginForm.reset();
+        }
+      );
   }
 
   validar(): void {

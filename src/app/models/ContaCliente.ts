@@ -1,4 +1,4 @@
-export class Conta {
+export class ContaCliente {
   nome: string | null;
   email: string | null;
   senha: string | null;

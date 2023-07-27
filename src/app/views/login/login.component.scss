@@ -36,6 +36,16 @@
 
   .inputSenhaLogin {
     width: 100%;
+    margin: 1px;
+
+    // Ajustando o tamanho do campo de input da senha de cadastro, para ocupar 100% da div 'campos-cadastro'.
+    ::ng-deep .p-password {
+      width: 100%;
+
+      .p-inputtext {
+        width: 100%;
+      }
+    }
   }
 }
 

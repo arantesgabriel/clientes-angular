@@ -15,12 +15,15 @@ import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CadastroComponent
+    CadastroComponent,
+    DashboardComponent
 
   ],
   imports: [
@@ -35,7 +38,8 @@ import { RouterModule } from '@angular/router';
     ButtonModule,
     CheckboxModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

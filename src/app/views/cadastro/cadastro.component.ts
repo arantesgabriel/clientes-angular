@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Conta } from 'src/app/models/Conta';
+import { ContaCliente } from 'src/app/models/ContaCliente';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +13,7 @@ import { Conta } from 'src/app/models/Conta';
   templateUrl: './cadastro.component.html',
   styleUrls: ['./cadastro.component.scss'],
 })
+
 export class CadastroComponent {
   mensagemErro: string = '';
   mostrarMensagemErro: boolean = false;
@@ -33,7 +34,7 @@ export class CadastroComponent {
     this.startLoader();
 
     // Coleta as informações digitadas pelo usuário no formGroup.
-    const novaConta: Conta = {
+    const novaConta: ContaCliente = {
       nome: this.cadastroForm.controls['userInput'].value,
       email: this.cadastroForm.controls['emailInput'].value,
       senha: this.cadastroForm.controls['passwordInput'].value,
@@ -49,7 +50,7 @@ export class CadastroComponent {
     this.redirecionarLogin();
   }
 
-  validarCampos(novaConta: Conta): string {
+  validarCampos(novaConta: ContaCliente): string {
     let erro = '';
 
     // Realiza a validação se o campo nome está nulo ou vazio.
@@ -73,7 +74,7 @@ export class CadastroComponent {
   }
 
   // Efetua o cadastro de uma nova conta com os dados digitados pelo usuário no banco de dados.
-  enviarClienteBackend(novaConta: Conta) {
+  enviarClienteBackend(novaConta: ContaCliente) {
     this.http.post(`${this.apiBack}/clientes/cadastrar`, novaConta).subscribe(
       (response) => {
         this.stopLoader();
