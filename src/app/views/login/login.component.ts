@@ -52,7 +52,7 @@ export class LoginComponent {
         (response) => {
           console.log(response); // Mensagem de sucesso ou erro da API
           if (response === 'Login bem-sucedido!') {
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/control']);
             this.loginForm.reset();
           }
         },

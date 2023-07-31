@@ -15,7 +15,7 @@ import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { ControlComponent } from './views/control/control.component';
 import { TableModule } from 'primeng/table';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { TableModule } from 'primeng/table';
     AppComponent,
     LoginComponent,
     CadastroComponent,
-    DashboardComponent
+    ControlComponent
 
   ],
   imports: [
