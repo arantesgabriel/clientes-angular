@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ControlComponent } from './views/control/control.component';
 import { TableModule } from 'primeng/table';
+import { ClienteService } from './views/service/cliente.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { TableModule } from 'primeng/table';
     RouterModule,
     TableModule
   ],
-  providers: [],
+  providers: [ClienteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
