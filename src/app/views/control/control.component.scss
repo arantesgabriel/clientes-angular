@@ -7,12 +7,12 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: aliceblue;
+  background-color: #282936;
 }
 
 .title{
   display: flex;
-  color: black;
+  color: white;
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -21,4 +21,8 @@
 .content {
   height: 680px;
   width: 1500px;
+}
+
+.table{
+  color: white
 }

@@ -1,5 +1,4 @@
 <div class="container">
-
   <div class="content">
     <div class="title">
       <h2>Painel de Controle</h2>
@@ -7,7 +6,10 @@
 
     <div class="table">
       <div class="card">
-        <p-table [value]="clientes">
+        <p-table
+          [value]="clientes"
+          styleClass="p-datatable-striped"
+        >
           <ng-template pTemplate="header">
             <tr>
               <th>Código</th>
@@ -16,18 +18,16 @@
               <th>Senha</th>
             </tr>
           </ng-template>
-          <ng-template pTemplate="body" let-product>
+          <ng-template pTemplate="body" let-clientes>
             <tr>
-              <td>{{ product.codigo }}</td>
-              <td>{{ product.name }}</td>
-              <td>{{ product.category }}</td>
-              <td>{{ product.quantity }}</td>
+              <td>{{ clientes.codcli }}</td>
+              <td>{{ clientes.nome }}</td>
+              <td>{{ clientes.email }}</td>
+              <td>{{ clientes.senha }}</td>
             </tr>
           </ng-template>
         </p-table>
       </div>
     </div>
-
   </div>
-
 </div>

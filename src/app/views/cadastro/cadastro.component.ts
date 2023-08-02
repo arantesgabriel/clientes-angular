@@ -47,6 +47,7 @@ export class CadastroComponent {
       return;
     }
     this.enviarClienteBackend(novaConta);
+    alert("Conta criada com sucesso!")
     this.redirecionarLogin();
   }
 
