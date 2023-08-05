@@ -8,7 +8,9 @@ import { ClienteService } from '../service/cliente.service';
   styleUrls: ['./control.component.scss'],
 })
 export class ControlComponent implements OnInit {
+  cliente!: ContaCliente;
   clientes!: ContaCliente[];
+  clientesSelecionados!: ContaCliente;
 
   constructor(private clienteService: ClienteService) {}
 
@@ -17,4 +19,10 @@ export class ControlComponent implements OnInit {
       .listarClientes()
       .subscribe((data: ContaCliente[]) => (this.clientes = data));
   }
+
+  editarCliente(cliente: ContaCliente) {
+    this.clienteService.editarCliente(cliente);
+  }
+
+  deletarCliente(cliente: ContaCliente) {}
 }

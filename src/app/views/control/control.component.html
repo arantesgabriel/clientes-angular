@@ -8,22 +8,47 @@
       <div class="card">
         <p-table
           [value]="clientes"
-          styleClass="p-datatable-striped"
+          [(selection)]="clientesSelecionados"
+          dataKey="codigo"
         >
           <ng-template pTemplate="header">
             <tr>
+              <th style="width: 4rem">
+                <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+              </th>
               <th>Código</th>
               <th>Nome</th>
               <th>E-mail</th>
               <th>Senha</th>
+              <th>Ações</th>
+              <th></th>
             </tr>
           </ng-template>
-          <ng-template pTemplate="body" let-clientes>
+          <ng-template pTemplate="body" let-cliente>
             <tr>
-              <td>{{ clientes.codcli }}</td>
-              <td>{{ clientes.nome }}</td>
-              <td>{{ clientes.email }}</td>
-              <td>{{ clientes.senha }}</td>
+              <td>
+                <p-tableCheckbox [value]="cliente"></p-tableCheckbox>
+              </td>
+              <td>{{ cliente.codigo }}</td>
+              <td>{{ cliente.nome }}</td>
+              <td>{{ cliente.email }}</td>
+              <td>{{ cliente.senha }}</td>
+              <td>
+                <button
+                  pButton
+                  pRipple
+                  icon="pi pi-pencil"
+                  class="p-button-rounded p-button-success mr-2"
+                  (click)="editarCliente(cliente)"
+                ></button>
+                <button
+                  pButton
+                  pRipple
+                  icon="pi pi-trash"
+                  class="p-button-rounded p-button-warning"
+                  (click)="deletarCliente(cliente)"
+                ></button>
+              </td>
             </tr>
           </ng-template>
         </p-table>
