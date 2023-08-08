@@ -15,7 +15,7 @@ export class ClienteService {
     return this.http.get<ContaCliente[]>(`${this.apiBack}/clientes/listar`);
   }
 
-  editarCliente(cliente: ContaCliente): Observable<ContaCliente> {
+  salvarCliente(cliente: ContaCliente): Observable<ContaCliente> {
     const url = `${this.apiBack}/clientes/editar`;
     return this.http.post<ContaCliente>(url, cliente);
   }

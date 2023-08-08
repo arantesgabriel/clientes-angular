@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -24,8 +24,7 @@ import { ClienteService } from './views/service/cliente.service';
     AppComponent,
     LoginComponent,
     CadastroComponent,
-    ControlComponent
-
+    ControlComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,9 +39,10 @@ import { ClienteService } from './views/service/cliente.service';
     CheckboxModule,
     HttpClientModule,
     RouterModule,
-    TableModule
+    TableModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ClienteService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

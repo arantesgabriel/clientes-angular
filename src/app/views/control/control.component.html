@@ -4,6 +4,17 @@
       <h2>Painel de Controle</h2>
     </div>
 
+    <ng-template pTemplate="left">
+      <button
+        pButton
+        pRipple
+        label="New"
+        icon="pi pi-plus"
+        class="p-button-success mr-2"
+        (click)="openNew()"
+      ></button>
+    </ng-template>
+
     <div class="table">
       <div class="card">
         <p-table
@@ -56,3 +67,39 @@
     </div>
   </div>
 </div>
+
+<p-dialog
+  [(visible)]="clienteDialog"
+  [style]="{ width: '450px' }"
+  header="Editar Cliente"
+  [modal]="true"
+  styleClass="p-fluid"
+>
+  <ng-template pTemplate="content">
+    <div class="field">
+      <label for="name">Nome</label>
+      <input
+        type="text"
+        pInputText
+        id="nome"
+        [(ngModel)]="cliente.nome"
+        required
+        autofocus
+      />
+      <small class="p-error" *ngIf="submitted && !cliente.nome"
+        >O nome é obrigatório.</small
+      >
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      pRipple
+      label="Salvar"
+      icon="pi pi-check"
+      class="p-button-text"
+      (click)="editarCliente(cliente)"
+    ></button>
+  </ng-template>
+</p-dialog>

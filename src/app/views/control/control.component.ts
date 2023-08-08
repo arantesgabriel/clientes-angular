@@ -10,6 +10,8 @@ import { ClienteService } from '../service/cliente.service';
 export class ControlComponent implements OnInit {
   cliente!: ContaCliente;
   clientes!: ContaCliente[];
+  submitted: boolean = false;
+  clienteDialog: boolean = false;
   clientesSelecionados!: ContaCliente;
 
   constructor(private clienteService: ClienteService) {}
@@ -20,8 +22,23 @@ export class ControlComponent implements OnInit {
       .subscribe((data: ContaCliente[]) => (this.clientes = data));
   }
 
+  openNew() {
+    this.submitted = false;
+    this.clienteDialog = true;
+  }
+
   editarCliente(cliente: ContaCliente) {
-    this.clienteService.editarCliente(cliente);
+    this.clienteDialog = true;
+  }
+
+  salvarCliente(cliente: ContaCliente) {
+    this.clienteService.salvarCliente(cliente);
+    this.clientes = [...this.clientes];
+    this.clienteDialog = false;
+  }
+
+  hideDialog() {
+    this.clienteDialog = false;
   }
 
   deletarCliente(cliente: ContaCliente) {}
