@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ContaCliente } from 'src/app/models/ContaCliente';
 import { ClienteService } from '../service/cliente.service';
 
@@ -6,40 +7,42 @@ import { ClienteService } from '../service/cliente.service';
   selector: 'app-control',
   templateUrl: './control.component.html',
   styleUrls: ['./control.component.scss'],
+  providers: [MessageService],
 })
 export class ControlComponent implements OnInit {
   cliente!: ContaCliente;
   clientes!: ContaCliente[];
-  submitted: boolean = false;
   clienteDialog: boolean = false;
-  clientesSelecionados!: ContaCliente;
+  clientesClonados: { [s: string]: ContaCliente } = {};
 
-  constructor(private clienteService: ClienteService) {}
+  constructor(
+    private clienteService: ClienteService,
+    private messageService: MessageService
+  ) {}
 
+  // Lista todas as contas na table ao iniciar a tela.
   ngOnInit() {
     this.clienteService
       .listarClientes()
       .subscribe((data: ContaCliente[]) => (this.clientes = data));
   }
 
-  openNew() {
-    this.submitted = false;
-    this.clienteDialog = true;
+  onRowEditInit(cliente: ContaCliente) {
+    this.clientesClonados[cliente.codigo as string] = { ...cliente };
   }
 
-  editarCliente(cliente: ContaCliente) {
-    this.clienteDialog = true;
-  }
-
-  salvarCliente(cliente: ContaCliente) {
+  onRowEditSave(cliente: ContaCliente) {
+    console.log("Antes", cliente);
     this.clienteService.salvarCliente(cliente);
-    this.clientes = [...this.clientes];
-    this.clienteDialog = false;
+    console.log("Depois", cliente);
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Sucesso',
+      detail: 'Cliente alterado com sucesso.',
+    });
   }
 
-  hideDialog() {
-    this.clienteDialog = false;
+  onRowEditCancel(cliente: ContaCliente, codigo: number) {
+    this.clientes[codigo] = this.clientesClonados[cliente.codigo as string];
   }
-
-  deletarCliente(cliente: ContaCliente) {}
 }
