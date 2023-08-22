@@ -18,13 +18,17 @@ import { RouterModule } from '@angular/router';
 import { ControlComponent } from './views/control/control.component';
 import { TableModule } from 'primeng/table';
 import { ClienteService } from './views/service/cliente.service';
+import { MessageModule } from 'primeng/message';
+import { MessagesModule } from 'primeng/messages';
+import { ToastModule } from 'primeng/toast';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     CadastroComponent,
-    ControlComponent,
+    ControlComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,9 @@ import { ClienteService } from './views/service/cliente.service';
     HttpClientModule,
     RouterModule,
     TableModule,
+    MessageModule,
+    MessagesModule,
+    ToastModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ClienteService],
