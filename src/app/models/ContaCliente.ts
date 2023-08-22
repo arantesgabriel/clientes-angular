@@ -1,10 +1,10 @@
 export class ContaCliente {
-  codigo: string | null;
+  codigo: number;
   nome: string | null;
   email: string | null;
   senha: string | null;
 
-  constructor(codigo: string, nome: string, email: string, senha: string) {
+  constructor(codigo: number, nome: string, email: string, senha: string) {
     this.codigo = codigo;
     this.nome = nome
     this.email = email

@@ -17,10 +17,11 @@ export class ClienteService {
 
   editarCliente(cliente: ContaCliente): Observable<ContaCliente> {
     const url = `${this.apiBack}/clientes/editar`;
-    return this.http.post<ContaCliente>(url, cliente) ;
+    return this.http.post<ContaCliente>(url, cliente);
   }
 
-  deletarCliente(codigo: number){
-    return this.http.delete<ContaCliente>(`${this.apiBack}/clientes/deletarConta`);
+  deletarCliente(codigo: number) {
+    return this.http.delete<ContaCliente>(`${this.apiBack}/clientes/deletarConta/${codigo}`
+    );
   }
 }

@@ -21,6 +21,7 @@ import { ClienteService } from './views/service/cliente.service';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ToastModule } from 'primeng/toast';
     TableModule,
     MessageModule,
     MessagesModule,
-    ToastModule
+    ToastModule,
+    ConfirmDialogModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [ClienteService],

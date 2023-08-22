@@ -29,7 +29,7 @@ export class ControlComponent implements OnInit {
   }
 
   onRowEditInit(cliente: ContaCliente) {
-    this.clientesClonados[cliente.codigo as string] = { ...cliente };
+    this.clientesClonados[cliente.codigo as number] = { ...cliente };
   }
 
   onRowEditSave(cliente: ContaCliente) {
@@ -53,7 +53,7 @@ export class ControlComponent implements OnInit {
   }
 
   onRowEditCancel(cliente: ContaCliente, codigo: number) {
-    this.clientes[codigo] = this.clientesClonados[cliente.codigo as string];
+    this.clientes[codigo] = this.clientesClonados[+cliente.codigo];
   }
 
   deletarCliente(cliente: ContaCliente) {
@@ -63,28 +63,28 @@ export class ControlComponent implements OnInit {
       header: 'Confirmar',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        if (cliente.codigo !== null) {
-          const codigoNumero = parseInt(cliente.codigo, 10); // Converter string para número
-          if (!isNaN(codigoNumero)) {
-            this.clienteService.deletarCliente(codigoNumero).subscribe(
-              () => {
-                this.messageService.add({
-                  severity: 'success',
-                  summary: 'Sucesso',
-                  detail: 'Cliente Excluído',
-                  life: 3000,
-                });
-              },
-              (error) => {
-                console.error('Erro ao excluir o cliente:', error);
-              }
-            );
-          } else {
-            console.error('Erro ao converter o código do cliente para número.');
+        this.clienteService.deletarCliente(cliente.codigo).subscribe(
+          () => {
+            console.log('Cliente excluído com sucesso.');
+            this.clienteService
+              .listarClientes()
+              .subscribe((data: ContaCliente[]) => (this.clientes = data));
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Sucesso',
+              detail: 'Cliente excluído com sucesso.',
+            });
+          },
+          (error) => {
+            console.error('Erro ao excluir cliente', error);
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Erro',
+              detail: 'Falha ao excluir cliente',
+              life: 3000,
+            });
           }
-        } else {
-          console.error('O código do cliente é nulo.');
-        }
+        );
       },
     });
   }
