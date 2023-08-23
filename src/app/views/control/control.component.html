@@ -1,135 +1,129 @@
-<span class="title">Painel de Contas</span>
+<div class="title">
+  <div class="content"><h2>Painel de Contas</h2></div>
+</div>
 
 <div class="container">
-  <div class="list">
-    <p-toast></p-toast>
-    <p-table
-      [value]="clientes"
-      dataKey="codigo"
-      editMode="row"
-      [tableStyle]="{ 'min-width': '50rem' }"
+  <p-toast></p-toast>
+  <p-table
+    [value]="clientes"
+    dataKey="codigo"
+    editMode="row"
+    [tableStyle]="{ 'min-width': '100rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 20%">Código</th>
+        <th style="width: 20%">Nome</th>
+        <th style="width: 20%">Email</th>
+        <th style="width: 20%">Senha</th>
+        <th style="width: 20%">Ações</th>
+      </tr>
+    </ng-template>
+
+    <ng-template
+      pTemplate="body"
+      let-cliente
+      let-editing="editing"
+      let-ri="rowIndex"
     >
-      <ng-template pTemplate="header">
-        <tr>
-          <th style="width: 20%">Código</th>
-          <th style="width: 20%">Nome</th>
-          <th style="width: 20%">Email</th>
-          <th style="width: 20%">Senha</th>
-          <th style="width: 20%">Ações</th>
-          <th style="width: 20%"></th>
-        </tr>
-      </ng-template>
+      <tr [pEditableRow]="cliente">
+        <td>
+          <strong>
+            {{ cliente.codigo }}
+          </strong>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="text"
+                [(ngModel)]="cliente.nome"
+                required
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ cliente.nome }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="text"
+                [(ngModel)]="cliente.email"
+                required
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{ cliente.email }}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input
+                pInputText
+                type="password"
+                [(ngModel)]="cliente.senha"
+                required
+              />
+            </ng-template>
+            <ng-template pTemplate="output">
+              •••••••••••
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td>
+          <div class="flex align-items-center justify-content-center gap-2">
+            <button
+              *ngIf="!editing"
+              pButton
+              pRipple
+              type="button"
+              pInitEditableRow
+              icon="pi pi-pencil"
+              (click)="onRowEditInit(cliente)"
+              class="p-button-rounded p-button-text"
+            ></button>
 
-      <ng-template
-        pTemplate="body"
-        let-cliente
-        let-editing="editing"
-        let-ri="rowIndex"
-      >
-        <tr [pEditableRow]="cliente">
-          <td>
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <input pInputText type="text" [(ngModel)]="cliente.codigo" />
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{ cliente.codigo }}
-              </ng-template>
-            </p-cellEditor>
-          </td>
-          <td>
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <input
-                  pInputText
-                  type="text"
-                  [(ngModel)]="cliente.nome"
-                  required
-                />
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{ cliente.nome }}
-              </ng-template>
-            </p-cellEditor>
-          </td>
-          <td>
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <input
-                  pInputText
-                  type="text"
-                  [(ngModel)]="cliente.nome"
-                  required
-                />
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{ cliente.email }}
-              </ng-template>
-            </p-cellEditor>
-          </td>
-          <td>
-            <p-cellEditor>
-              <ng-template pTemplate="input">
-                <input
-                  pInputText
-                  type="text"
-                  [(ngModel)]="cliente.senha"
-                  required
-                />
-              </ng-template>
-              <ng-template pTemplate="output">
-                {{ cliente.senha }}
-              </ng-template>
-            </p-cellEditor>
-          </td>
-          <td>
-            <div class="flex align-items-center justify-content-center gap-2">
-              <button
-                *ngIf="!editing"
-                pButton
-                pRipple
-                type="button"
-                pInitEditableRow
-                icon="pi pi-pencil"
-                (click)="onRowEditInit(cliente)"
-                class="p-button-rounded p-button-text"
-              ></button>
+            <button
+              *ngIf="!editing"
+              pButton
+              pRipple
+              type="button"
+              icon="pi pi-trash"
+              (click)="deletarCliente(cliente)"
+              class="p-button-rounded p-button-text"
+            ></button>
 
-              <button
-                *ngIf="!editing"
-                pButton
-                pRipple
-                type="button"
-                icon="pi pi-trash"
-                (click)="deletarCliente(cliente)"
-                class="p-button-rounded p-button-text"
-              ></button>
-
-              <button
-                *ngIf="editing"
-                pButton
-                pRipple
-                type="button"
-                pSaveEditableRow
-                icon="pi pi-check"
-                (click)="onRowEditSave(cliente)"
-                class="p-button-rounded p-button-text p-button-success mr-2"
-              ></button>
-              <button
-                *ngIf="editing"
-                pButton
-                pRipple
-                type="button"
-                pCancelEditableRow
-                icon="pi pi-times"
-                (click)="onRowEditCancel(cliente, ri)"
-                class="p-button-rounded p-button-text p-button-danger"
-              ></button>
-            </div>
-          </td>
-        </tr>
-      </ng-template>
-    </p-table>
-  </div>
+            <button
+              *ngIf="editing"
+              pButton
+              pRipple
+              type="button"
+              pSaveEditableRow
+              icon="pi pi-check"
+              (click)="onRowEditSave(cliente)"
+              class="p-button-rounded p-button-text p-button-success mr-2"
+            ></button>
+            <button
+              *ngIf="editing"
+              pButton
+              pRipple
+              type="button"
+              pCancelEditableRow
+              icon="pi pi-times"
+              (click)="onRowEditCancel(cliente, ri)"
+              class="p-button-rounded p-button-text p-button-danger"
+            ></button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
 </div>
 <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
